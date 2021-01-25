@@ -22,6 +22,7 @@ fi }
 ## Here we Go!!
 echo "This is The Deathbybandaid Pi Install" > herewego_textbox
 whiptail --textbox --title "Let's Start!" herewego_textbox 10 80
+rm *_textbox
 
 ## Hostname
 sudo bash /etc/piadvanced/modules/hostname.sh
@@ -44,8 +45,11 @@ sudo bash /etc/piadvanced/modules/memorysplit.sh
 ## Total Mem Tweak
 sudo bash /etc/piadvanced/modules/totalmemtweak.sh
 
-## Swap sapce tweak
+## Swap space tweak
 sudo bash /etc/piadvanced/modules/swapspacetweak.sh
+
+## zram-config
+sudo bash /etc/piadvanced/modules/zramconfig.sh
 
 ## SSH
 sudo bash /etc/piadvanced/modules/ssh.sh
@@ -74,6 +78,7 @@ sudo bash /etc/piadvanced/modules/aptgetinstall.sh
 ## Admin Email
 echo "The next Three installs are Email options. Apticron, Mailutils, and Exim4" > adminmail_textbox
 whiptail --textbox --title "Email Options" adminmail_textbox 10 80
+rm *_textbox
 
 ## Apticron
 sudo bash /etc/piadvanced/modules/apticron.sh
@@ -102,6 +107,7 @@ sudo bash /etc/piadvanced/modules/sambashare.sh
 ## Dynamic Update Clients
 echo "The next Three installs are dynamic update clients for No-IP, Dyndns, and DuckDNS" > ducs_textbox
 whiptail --textbox --title "Dynamic Update Options" ducs_textbox 10 80
+rm *_textbox
 
 ## No-ip Dynamic Update Client
 sudo bash /etc/piadvanced/modules/noip.sh
@@ -115,6 +121,7 @@ sudo bash /etc/piadvanced/modules/duckdns.sh
 ## VPNs
 echo "The next two installs are openvpn and pivpn" > vpns_textbox
 whiptail --textbox --title "VPN Options" vpns_textbox 10 80
+rm *_textbox
 
 ## OpenVPN
 sudo bash /etc/piadvanced/modules/openvpn.sh
@@ -140,6 +147,7 @@ sudo bash /etc/piadvanced/modules/dnscrypt.sh
 ## Webserver settings
 echo "Let's modify the webserver configurations. Users of Pi-Hole, may need to look at the Lighttpd settings." > webserver_textbox
 whiptail --textbox --title "Webserver Questions Ahead" webserver_textbox 10 80
+rm *_textbox
 sudo bash /etc/piadvanced/modules/lighttpd.sh
 sudo bash /etc/piadvanced/modules/apache.sh
 sudo bash /etc/piadvanced/modules/nginx.sh
@@ -174,6 +182,7 @@ sudo bash /etc/piadvanced/modules/nagios.sh
 ## Proxies
 echo "The next two installs are Squid and Privoxy, choose one ONLY!" > proxies_textbox
 whiptail --textbox --title "Proxies" proxies_textbox 10 80
+rm *_textbox
 
 ## Privoxy
 sudo bash /etc/piadvanced/modules/privoxy.sh
@@ -199,6 +208,7 @@ sudo bash /etc/piadvanced/modules/grafana.sh
 ## openvas
 echo "Warning: The OpenVas install (next) is untested." > openvas_textbox
 whiptail --textbox --title "OpenVas" openvas_textbox 10 80
+rm *_textbox
 sudo bash /etc/piadvanced/modules/openvas.sh
 
 ## plexboard
@@ -216,3 +226,4 @@ sudo bash /etc/piadvanced/FIREWALL.sh
 ## All Done
 echo "This concludes the script. Reboot to complete. Consult the readme for additional configuration." > completed_textbox
 whiptail --textbox --title "Completed" completed_textbox 10 80
+rm *_textbox
