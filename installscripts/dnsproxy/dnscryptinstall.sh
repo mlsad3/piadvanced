@@ -44,11 +44,11 @@ sudo sed -i '$i 127.0.0.4       d0wn-is-ns1' /etc/hosts
 ## dnsmasq
 echo "Adding Entries to DNSMasq"
 sudo /etc/init.d/dnsmasq stop
-sudo touch /etc/dnsmasq.d/10-dnscrypt.conf
 sudo sed -i '/server=/d' /etc/dnsmasq.d/10-dnscrypt.conf
-sudo sed -i '$i server=127.0.0.2#5454' /etc/dnsmasq.d/10-dnscrypt.conf
-sudo sed -i '$i server=127.0.0.3#5656' /etc/dnsmasq.d/10-dnscrypt.conf
-sudo sed -i '$i server=127.0.0.4#5757' /etc/dnsmasq.d/10-dnscrypt.conf
+sudo touch /etc/dnsmasq.d/10-dnscrypt.conf
+sudo echo 'server=127.0.0.2#5454' >> /etc/dnsmasq.d/10-dnscrypt.conf
+sudo echo 'server=127.0.0.3#5656' >> /etc/dnsmasq.d/10-dnscrypt.conf
+sudo echo 'server=127.0.0.4#5757' >> /etc/dnsmasq.d/10-dnscrypt.conf
 sudo /etc/init.d/dnsmasq start
 ps aux | grep 'dnscrypt-proxy'
 echo Done
