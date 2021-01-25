@@ -2,23 +2,8 @@
 ## DNSCRYPT
 
 ## From : https://www.reddit.com/r/pihole/comments/65su4b/dnscrypt_simple_install_simple_config/
-## Download
-cd /etc/piadvanced/installscripts/dnsproxy
-sudo wget https://download.dnscrypt.org/dnscrypt-proxy/LATEST.tar.bz2
-sudo tar -xf LATEST.tar.bz2
-#sudo rm LATEST.tar.bz2
-
-## build
-pattern="dnscrypt-proxy-"
-for _dir in *"${pattern}"*; do     [ -d "${_dir}" ] && dir="${_dir}" && break; done
-cd $dir
-sudo ldconfig
-sudo bash ./configure --with-systemd
-sudo make
-sudo make install
-sudo useradd -r -d /var/dnscrypt -m -s /usr/sbin/nologin dnscrypt
-
 ## install
+sudo apt-get install dnscrypt-proxy
 echo "Adding Resolver Processes To rc.local"
 sudo sed -i '/exit 0/d' /etc/rc.local
 sudo sed -i '/dnscrypt-proxy/d' /etc/rc.local
@@ -45,10 +30,7 @@ sudo sed -i '$i 127.0.0.4       d0wn-is-ns1' /etc/hosts
 echo "Adding Entries to DNSMasq"
 sudo /etc/init.d/dnsmasq stop
 sudo sed -i '/server=/d' /etc/dnsmasq.d/10-dnscrypt.conf
-sudo touch /etc/dnsmasq.d/10-dnscrypt.conf
-sudo echo 'server=127.0.0.2#5454' >> /etc/dnsmasq.d/10-dnscrypt.conf
-sudo echo 'server=127.0.0.3#5656' >> /etc/dnsmasq.d/10-dnscrypt.conf
-sudo echo 'server=127.0.0.4#5757' >> /etc/dnsmasq.d/10-dnscrypt.conf
+sudo cp -n /etc/piadvanced/piholetweaks/dnscrypt/10-dnscrypt.conf /etc/dnsmasq.d/
 sudo /etc/init.d/dnsmasq start
 ps aux | grep 'dnscrypt-proxy'
 echo Done
