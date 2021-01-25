@@ -22,6 +22,7 @@ sudo apt-get install -y doxygen
 sudo apt-get install -y flex
 sudo apt-get install -y gawk
 sudo apt-get install -y git
+sudo apt-get install -y git-gui
 sudo apt-get install -y gnupg
 sudo apt-get install -y lsof
 sudo apt-get install -y nodejs
@@ -38,6 +39,7 @@ sudo apt-get install -y swig
 sudo apt-get install -y ty-perl
 sudo apt-get install -y unzip
 sudo apt-get install -y uuid-dev
+sudo apt-get install -y vim-gtk
 sudo apt-get install -y wget
 sudo apt-get install -y xmltoman
 sudo apt-get install -y xsltproc
